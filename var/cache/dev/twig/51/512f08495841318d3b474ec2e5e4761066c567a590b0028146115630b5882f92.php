@@ -22,33 +22,33 @@ class __TwigTemplate_e27a4d0f390ea315abd4be614049c072c94829c808eed06a1e215a4714c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3b59921d8ea16248083b4d9028b66d14ae95e7052c8dd6b4b624042a8372d217 = $this->env->getExtension("native_profiler");
-        $__internal_3b59921d8ea16248083b4d9028b66d14ae95e7052c8dd6b4b624042a8372d217->enter($__internal_3b59921d8ea16248083b4d9028b66d14ae95e7052c8dd6b4b624042a8372d217_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "event/list.html.twig"));
+        $__internal_80e446e44a622c81d3f6176ef969a2966cb3098f676dd4ad2af52c7dcae0ee63 = $this->env->getExtension("native_profiler");
+        $__internal_80e446e44a622c81d3f6176ef969a2966cb3098f676dd4ad2af52c7dcae0ee63->enter($__internal_80e446e44a622c81d3f6176ef969a2966cb3098f676dd4ad2af52c7dcae0ee63_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "event/list.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_3b59921d8ea16248083b4d9028b66d14ae95e7052c8dd6b4b624042a8372d217->leave($__internal_3b59921d8ea16248083b4d9028b66d14ae95e7052c8dd6b4b624042a8372d217_prof);
+        $__internal_80e446e44a622c81d3f6176ef969a2966cb3098f676dd4ad2af52c7dcae0ee63->leave($__internal_80e446e44a622c81d3f6176ef969a2966cb3098f676dd4ad2af52c7dcae0ee63_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_0cc820ff456a96385daf702617a8380233146bf89b9d50a38026d21c28eb7ffc = $this->env->getExtension("native_profiler");
-        $__internal_0cc820ff456a96385daf702617a8380233146bf89b9d50a38026d21c28eb7ffc->enter($__internal_0cc820ff456a96385daf702617a8380233146bf89b9d50a38026d21c28eb7ffc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_d0dc4816cb72fd9cf79ca11c78c606658adf1e87f5142382102d103fecf68d56 = $this->env->getExtension("native_profiler");
+        $__internal_d0dc4816cb72fd9cf79ca11c78c606658adf1e87f5142382102d103fecf68d56->enter($__internal_d0dc4816cb72fd9cf79ca11c78c606658adf1e87f5142382102d103fecf68d56_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         $this->displayParentBlock("title", $context, $blocks);
         echo " | Events";
         
-        $__internal_0cc820ff456a96385daf702617a8380233146bf89b9d50a38026d21c28eb7ffc->leave($__internal_0cc820ff456a96385daf702617a8380233146bf89b9d50a38026d21c28eb7ffc_prof);
+        $__internal_d0dc4816cb72fd9cf79ca11c78c606658adf1e87f5142382102d103fecf68d56->leave($__internal_d0dc4816cb72fd9cf79ca11c78c606658adf1e87f5142382102d103fecf68d56_prof);
 
     }
 
     // line 5
     public function block_body($context, array $blocks = array())
     {
-        $__internal_17b261edb9dece53d5582b35aeb4e2ae302787175ee9426651085bd86d536715 = $this->env->getExtension("native_profiler");
-        $__internal_17b261edb9dece53d5582b35aeb4e2ae302787175ee9426651085bd86d536715->enter($__internal_17b261edb9dece53d5582b35aeb4e2ae302787175ee9426651085bd86d536715_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_a4cd6417e15f002418f1d56705d8163007d72da2df9fab8e05de329dc855bdf5 = $this->env->getExtension("native_profiler");
+        $__internal_a4cd6417e15f002418f1d56705d8163007d72da2df9fab8e05de329dc855bdf5->enter($__internal_a4cd6417e15f002418f1d56705d8163007d72da2df9fab8e05de329dc855bdf5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
         echo "    <table>
@@ -91,10 +91,16 @@ class __TwigTemplate_e27a4d0f390ea315abd4be614049c072c94829c808eed06a1e215a4714c
             // line 18
             echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "city", array()), "html", null, true);
             echo "</td>
-                    <td><a href=\"";
-            // line 19
+                    <td>
+                        <a href=\"";
+            // line 20
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("app_event_show", array("id" => $this->getAttribute($context["e"], "id", array()))), "html", null, true);
-            echo "\">Anzeigen</a></td>
+            echo "\">Anzeigen</a>
+                        <a href=\"";
+            // line 21
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("app_event_delete", array("id" => $this->getAttribute($context["e"], "id", array()))), "html", null, true);
+            echo "\">Löschen</a>
+                    </td>
                 </tr>
             ";
             $context['_iterated'] = true;
@@ -108,7 +114,7 @@ class __TwigTemplate_e27a4d0f390ea315abd4be614049c072c94829c808eed06a1e215a4714c
             }
         }
         if (!$context['_iterated']) {
-            // line 22
+            // line 25
             echo "                <tr>
                     <td colspan=\"2\">Keine Events gefunden</td>
                 </tr>
@@ -117,12 +123,12 @@ class __TwigTemplate_e27a4d0f390ea315abd4be614049c072c94829c808eed06a1e215a4714c
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['e'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 26
+        // line 29
         echo "        </tbody>
     </table>
 ";
         
-        $__internal_17b261edb9dece53d5582b35aeb4e2ae302787175ee9426651085bd86d536715->leave($__internal_17b261edb9dece53d5582b35aeb4e2ae302787175ee9426651085bd86d536715_prof);
+        $__internal_a4cd6417e15f002418f1d56705d8163007d72da2df9fab8e05de329dc855bdf5->leave($__internal_a4cd6417e15f002418f1d56705d8163007d72da2df9fab8e05de329dc855bdf5_prof);
 
     }
 
@@ -138,7 +144,7 @@ class __TwigTemplate_e27a4d0f390ea315abd4be614049c072c94829c808eed06a1e215a4714c
 
     public function getDebugInfo()
     {
-        return array (  121 => 26,  112 => 22,  96 => 19,  92 => 18,  88 => 17,  83 => 16,  65 => 15,  54 => 6,  48 => 5,  35 => 3,  11 => 1,);
+        return array (  127 => 29,  118 => 25,  101 => 21,  97 => 20,  92 => 18,  88 => 17,  83 => 16,  65 => 15,  54 => 6,  48 => 5,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
@@ -159,7 +165,10 @@ class __TwigTemplate_e27a4d0f390ea315abd4be614049c072c94829c808eed06a1e215a4714c
 /*                 <tr class="{{ cycle(['odd', 'even'], loop.index) }}">*/
 /*                     <td>{{ e.name }}</td>*/
 /*                     <td>{{ e.city }}</td>*/
-/*                     <td><a href="{{ path("app_event_show", {"id":e.id}) }}">Anzeigen</a></td>*/
+/*                     <td>*/
+/*                         <a href="{{ path("app_event_show", {"id":e.id}) }}">Anzeigen</a>*/
+/*                         <a href="{{ path("app_event_delete", {"id":e.id}) }}">Löschen</a>*/
+/*                     </td>*/
 /*                 </tr>*/
 /*             {% else %}*/
 /*                 <tr>*/

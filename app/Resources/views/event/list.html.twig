@@ -16,7 +16,10 @@
                 <tr class="{{ cycle(['odd', 'even'], loop.index) }}">
                     <td>{{ e.name }}</td>
                     <td>{{ e.city }}</td>
-                    <td><a href="{{ path("app_event_show", {"id":e.id}) }}">Anzeigen</a></td>
+                    <td>
+                        <a href="{{ path("app_event_show", {"id":e.id}) }}">Anzeigen</a>
+                        <a href="{{ path("app_event_delete", {"id":e.id}) }}">Löschen</a>
+                    </td>
                 </tr>
             {% else %}
                 <tr>

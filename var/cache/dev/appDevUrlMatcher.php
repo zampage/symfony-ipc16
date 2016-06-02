@@ -140,6 +140,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_event_show')), array (  '_controller' => 'AppBundle\\Controller\\EventController::showAction',));
             }
 
+            // app_event_delete
+            if (0 === strpos($pathinfo, '/event/delete') && preg_match('#^/event/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_event_delete')), array (  '_controller' => 'AppBundle\\Controller\\EventController::deleteAction',));
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Doctrine\ORM\EntityManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Event;
@@ -49,5 +50,22 @@ class EventController extends Controller
         return $this->render('event/show.html.twig', array(
            'event' => $event
         ));
+    }
+
+    /**
+     * @Route("/event/delete/{id}", name="app_event_delete")
+     */
+    public function deleteAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository('AppBundle:Event')->find($id);
+        if(!$event){
+            throw $this->createNotFoundException("Event: " . $id . " not found!");
+        }
+        $em->remove($event);
+        $em->flush();
+
+        return new RedirectResponse(
+            $this->generateUrl("app_event_list")
+        );
     }
 }
