@@ -114,6 +114,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::sideAction',  '_route' => 'sidepage',);
         }
 
+        // app_default_hello
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_default_hello')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::sayHelloAction',));
+        }
+
+        // app_default_api
+        if ($pathinfo === '/api') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::apiAction',  '_route' => 'app_default_api',);
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

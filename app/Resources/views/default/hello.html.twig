@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | {{ name }}{% endblock %}
+
+{% block body %}
+Hello <b>{{ name | upper }}</b>
+{% endblock %}
