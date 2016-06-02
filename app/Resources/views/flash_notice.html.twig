@@ -1,0 +1,5 @@
+{% for flashMessage in app.session.flashbag.get("delete.success") %}
+    <div class="flash-notice">
+        {{ flashMessage }} wurde erfoglreich gelöscht!
+    </div>
+{% endfor %}

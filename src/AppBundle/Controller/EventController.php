@@ -31,19 +31,17 @@ class EventController extends Controller
      * @Route("/event/list", name="app_event_list")
      */
     public function listAction(){
-        $em = $this->getDoctrine()->getManager();
-        $events = $em->getRepository('AppBundle:Event')->findAll();
+        $events = $this->getRepository()->findAll();
         return $this->render('event/list.html.twig', array(
             'events' => $events
         ));
     }
 
     /**
-     * @Route("/event/{id}", name="app_event_show")
+     * @Route("/event/{id}/show", name="app_event_show")
      */
     public function showAction($id){
-        $em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository('AppBundle:Event')->find($id);
+        $event = $this->getRepository()->find($id);
         if(!$event) {
             throw $this->createNotFoundException("Event: " . $id . " not found!");
         }
@@ -53,19 +51,32 @@ class EventController extends Controller
     }
 
     /**
-     * @Route("/event/delete/{id}", name="app_event_delete")
+     * @Route("/event/{id}/delete", name="app_event_delete")
      */
     public function deleteAction($id){
-        $em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository('AppBundle:Event')->find($id);
+        $event = $this->getRepository()->find($id);
         if(!$event){
             throw $this->createNotFoundException("Event: " . $id . " not found!");
         }
+
+        $em = $this->getDoctrine()->getManager();
         $em->remove($event);
         $em->flush();
+
+        //SET MARKER FOR LIST
+        //Flash => nur auf naechster seite
+        $this->addFlash("delete.success", $event->getName());
 
         return new RedirectResponse(
             $this->generateUrl("app_event_list")
         );
+    }
+
+    public function embeddedAction(){
+        return new Response('This does not need a route because it is embedded :)');
+    }
+
+    public function getRepository(){
+        return $this->getDoctrine()->getRepository('AppBundle:Event');
     }
 }

@@ -3,6 +3,7 @@
 {% block title %}{{ parent() }} | Events{% endblock %}
 
 {% block body %}
+    {{ include('flash_notice.html.twig') }}
     <table>
         <thead>
             <tr>
@@ -28,4 +29,8 @@
             {% endfor %}
         </tbody>
     </table>
+    <br>
+    <!-- EMBEDDED ELEMENT LADEN -->
+    {{ render(controller('AppBundle:Event:embedded')) }}
+    <!-- // -->
 {% endblock %}
