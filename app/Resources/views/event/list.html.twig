@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Events{% endblock %}
+
+{% block body %}
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Stadt</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in events %}
+                <tr class="{{ cycle(['odd', 'even'], loop.index) }}">
+                    <td>{{ e.name }}</td>
+                    <td>{{ e.city }}</td>
+                    <td><a href="{{ path("app_event_show", {"id":e.id}) }}">Anzeigen</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="2">Keine Events gefunden</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

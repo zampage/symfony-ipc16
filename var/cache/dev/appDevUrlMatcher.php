@@ -124,6 +124,24 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::apiAction',  '_route' => 'app_default_api',);
         }
 
+        if (0 === strpos($pathinfo, '/event')) {
+            // app_event_write
+            if ($pathinfo === '/event/write') {
+                return array (  '_controller' => 'AppBundle\\Controller\\EventController::writeAction',  '_route' => 'app_event_write',);
+            }
+
+            // app_event_list
+            if ($pathinfo === '/event/list') {
+                return array (  '_controller' => 'AppBundle\\Controller\\EventController::listAction',  '_route' => 'app_event_list',);
+            }
+
+            // app_event_show
+            if (preg_match('#^/event/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_event_show')), array (  '_controller' => 'AppBundle\\Controller\\EventController::showAction',));
+            }
+
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

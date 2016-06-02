@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | {{ event.name }}{% endblock %}
+
+{% block body %}
+    <h1>Event</h1>
+    ID: {{ event.id }}<br>
+    Name: {{ event.name }}<br>
+    City: {{ event.city }}<br>
+    <br>
+    <a href="{{ path("app_event_list") }}">Zurück</a>
+{% endblock %}
