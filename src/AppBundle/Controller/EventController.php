@@ -32,7 +32,7 @@ class EventController extends Controller
      * @Route("/event/list", name="app_event_list")
      */
     public function listAction(){
-        $events = $this->getRepository()->findAll();
+        $events = $this->getRepository()->findByBerlin();
         return $this->render('event/list.html.twig', array(
             'events' => $events
         ));

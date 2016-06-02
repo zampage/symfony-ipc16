@@ -10,5 +10,11 @@ namespace AppBundle\Repository;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
-
+    //IM EVENT REPO WERDEN select & from AUTOMATISCH GEMACHT
+    public function findByBerlin(){
+        $builder = $this->createQueryBuilder('e');
+        $builder->andWhere('e.city=:c')
+            ->setParameter('c', 'Berlin');
+        return $builder->getQuery()->getResult();
+    }
 }
