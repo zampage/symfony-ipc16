@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,12 +40,16 @@ class EventController extends Controller
 
     /**
      * @Route("/event/{id}/show", name="app_event_show")
+     * @ParamConverter("event", class="AppBundle:Event")
      */
-    public function showAction($id){
-        $event = $this->getRepository()->find($id);
-        if(!$event) {
-            throw $this->createNotFoundException("Event: " . $id . " not found!");
-        }
+    public function showAction($event){
+        /*
+         *  wenn @ParamConverter aktiv ist brauchts das nicht mehr
+            $event = $this->getRepository()->find($id);
+            if(!$event) {
+                throw $this->createNotFoundException("Event: " . $id . " not found!");
+            }
+        */
         return $this->render('event/show.html.twig', array(
            'event' => $event
         ));
@@ -52,13 +57,9 @@ class EventController extends Controller
 
     /**
      * @Route("/event/{id}/delete", name="app_event_delete")
+     * @ParamConverter("event", class="AppBundle:Event")
      */
-    public function deleteAction($id){
-        $event = $this->getRepository()->find($id);
-        if(!$event){
-            throw $this->createNotFoundException("Event: " . $id . " not found!");
-        }
-
+    public function deleteAction($event){
         $em = $this->getDoctrine()->getManager();
         $em->remove($event);
         $em->flush();
