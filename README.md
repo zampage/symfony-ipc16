@@ -1,4 +1,6 @@
-ipc16
-=====
+#Symfony IPC2016
 
-A Symfony project created on June 2, 2016, 9:40 am.
+This is a testproject to show the basics of Symfony2.
+It was created at the international php conference (IPC) by Markus Chiarot.
+
+Thanks to the speaker Timo Haberkern from PayPal! :)
